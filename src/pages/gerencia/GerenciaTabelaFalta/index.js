@@ -3,25 +3,18 @@ import { useState, useEffect } from "react";
 import GeneralTable from "../../../components/GeneralTable";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
-import Dropdown from "react-bootstrap/Dropdown";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 
-export default function TableFalta() {
+export default function GerenciaTabelaFalta() {
   const [showModalDelete, setShowModalDelete] = useState(false);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 1 },
     { field: "CodigoBarras", headerName: "Código de Barras", width: 2 },
     { field: "NomeProduto", headerName: "Nome do Produto" },
     { field: "Laboratorio", headerName: "Laboratório", width: 1 },
     { field: "Qtd", headerName: "Qtd.", width: 1 },
-    { field: "NomeCliente", headerName: "Nome do Cliente", width: 2 },
-    { field: "Telefone", headerName: "Telefone", width: 1 },
-    { field: "Pago", headerName: "Pago?", width: 1 },
     { field: "Vendedor", headerName: "Vendedor", width: 1 },
     { field: "Status", headerName: "Status", width: 1 },
-    { field: "Component", headerName: "", width: 1 },
+    { field: "ProcuraDivida", headerName: "", width: 1 },
   ];
 
   const rows = [
@@ -92,38 +85,6 @@ export default function TableFalta() {
     },
   ];
 
-  const ProcuraDivida = ({ row }) => {
-    let variant = "";
-    if (row.ProcuraDivida === "Divida") {
-      variant = "danger";
-    } else {
-      variant = "primary";
-    }
-    return (
-      <Dropdown>
-        <OverlayTrigger
-          placement="left"
-          overlay={
-            <Tooltip id={`tooltip-${row.id}`}>{row.ProcuraDivida}</Tooltip>
-          }
-        >
-          <Dropdown.Toggle
-            variant={variant}
-            id="dropdown-basic"
-          ></Dropdown.Toggle>
-        </OverlayTrigger>
-        <Dropdown.Menu>
-          <Dropdown.Item onClick={() => handleCloseModalDelete(row.id)}>
-            Editar
-          </Dropdown.Item>
-          <Dropdown.Item onClick={() => handleDeleteRow(row.id)}>
-            Excluir
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-    );
-  };
-
   const handleDeleteRow = (rowId) => {
     setShowModalDelete(true);
   };
@@ -139,7 +100,6 @@ export default function TableFalta() {
         rows={rows}
         editRow={() => {}}
         deleteRow={handleDeleteRow}
-        Component={ProcuraDivida}
       />
       <Modal show={showModalDelete} onHide={handleCloseModalDelete}>
         <Modal.Header closeButton>

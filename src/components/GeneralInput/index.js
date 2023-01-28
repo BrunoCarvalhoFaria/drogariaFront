@@ -14,6 +14,23 @@ export default function GeneralInput({
   validationFunction = () => {},
 }) {
   switch (inputType) {
+    case "password":
+      return (
+        <>
+          <Form.Group className="mx-2" controlId={id} key={id}>
+            <Form.Label className="mt-2">{label}</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder={placeholder}
+              value={value}
+              onChange={handleChange}
+              isValid={validationFunction}
+              required={required}
+            />
+          </Form.Group>
+        </>
+      );
+      break;
     case "text":
       return (
         <>
