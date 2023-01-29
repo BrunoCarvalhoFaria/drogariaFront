@@ -7,6 +7,7 @@ import Tab from "react-bootstrap/Tab";
 import GerenciaCadastro from "./GerenciaCadastro";
 import GerenciaManipulacao from "./GerenciaManipulacao";
 import GerenciaTabelaFalta from "./GerenciaTabelaFalta";
+import GerenciaFilter from "./GerenciaFilter";
 
 export default function GerenciaScreen() {
   const [showPage, setShowPage] = useState(false);

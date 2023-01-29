@@ -10,6 +10,9 @@ export default function GerenciaCadastro() {
   const handleChange = (e) => {
     setVendedor(e.target.value);
   };
+
+  const itemListVendedor = ["Vendedor 1", "Vendedor 2", "Vendedor 3"];
+
   return (
     <>
       <Row className="justify-content-md-center mt-3">
@@ -17,6 +20,7 @@ export default function GerenciaCadastro() {
           <Card className="text-center">
             <Card.Header>Cadastro de Vendedor</Card.Header>
             <Card.Body>
+              <Card.Title>Incluir Novo Vendedor</Card.Title>
               <Card.Text>
                 <GeneralInput
                   inputType="text"
@@ -28,7 +32,23 @@ export default function GerenciaCadastro() {
                 />
               </Card.Text>
               <Button variant="primary" onClick={() => {}}>
-                Salvar
+                Incluir
+              </Button>
+            </Card.Body>
+            <Card.Body>
+              <Card.Title>Excluir Vendedor</Card.Title>
+              <Card.Text>
+                <GeneralInput
+                  inputType="select"
+                  label="Vendedor"
+                  placeholder=""
+                  itemList={itemListVendedor}
+                  id="Vendedor"
+                  handleChange={handleChange}
+                />
+              </Card.Text>
+              <Button variant="danger" onClick={() => {}}>
+                Excluir
               </Button>
             </Card.Body>
           </Card>

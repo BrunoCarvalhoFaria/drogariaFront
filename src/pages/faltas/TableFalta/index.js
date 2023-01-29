@@ -11,7 +11,7 @@ export default function TableFalta() {
   const [showModalDelete, setShowModalDelete] = useState(false);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 1 },
+    { field: "DataCriacao", headerName: "Data Criação", width: 1 },
     { field: "CodigoBarras", headerName: "Código de Barras", width: 2 },
     { field: "NomeProduto", headerName: "Nome do Produto" },
     { field: "Laboratorio", headerName: "Laboratório", width: 1 },
@@ -27,6 +27,7 @@ export default function TableFalta() {
   const rows = [
     {
       id: 1,
+      DataCriacao: "02/02/2021",
       CodigoBarras: 78936502018,
       NomeProduto: "Lamotrigina 50mg c/30 cpr",
       Laboratorio: "Medley",
@@ -40,6 +41,7 @@ export default function TableFalta() {
     },
     {
       id: 2,
+      DataCriacao: "02/02/2021",
       CodigoBarras: 78936502018,
       NomeProduto: "Lamotrigina 50mg c/30 cpr",
       Laboratorio: "Medley",
@@ -53,6 +55,7 @@ export default function TableFalta() {
     },
     {
       id: 3,
+      DataCriacao: "02/02/2021",
       CodigoBarras: 78936502018,
       NomeProduto: "Lamotrigina 50mg c/30 cpr",
       Laboratorio: "Medley",
@@ -66,6 +69,7 @@ export default function TableFalta() {
     },
     {
       id: 4,
+      DataCriacao: "02/02/2021",
       CodigoBarras: 78936502018,
       NomeProduto: "Lamotrigina 50mg c/30 cpr",
       Laboratorio: "Medley",
@@ -79,6 +83,7 @@ export default function TableFalta() {
     },
     {
       id: 5,
+      DataCriacao: "02/02/2021",
       CodigoBarras: 78936502018,
       NomeProduto: "Lamotrigina 50mg c/30 cpr",
       Laboratorio: "Medley",
