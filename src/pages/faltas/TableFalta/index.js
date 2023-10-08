@@ -6,9 +6,11 @@ import { Button } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { FaltaGetAll } from "../../../Service/Falta";
 
 export default function TableFalta() {
   const [showModalDelete, setShowModalDelete] = useState(false);
+  const [faltas, setFaltas] = useState();
 
   const columns = [
     { field: "DataCriacao", headerName: "Data Criação", width: 1 },
@@ -24,78 +26,78 @@ export default function TableFalta() {
     { field: "Component", headerName: "", width: 1 },
   ];
 
-  const rows = [
-    {
-      id: 1,
-      DataCriacao: "02/02/2021",
-      CodigoBarras: 78936502018,
-      NomeProduto: "Lamotrigina 50mg c/30 cpr",
-      Laboratorio: "Medley",
-      Qtd: 5,
-      NomeCliente: "Maria Aparecida",
-      Telefone: "98104-6565",
-      Pago: "Sim",
-      Vendedor: "Ricardo",
-      ProcuraDivida: "Procura",
-      Status: "Aguarde",
-    },
-    {
-      id: 2,
-      DataCriacao: "02/02/2021",
-      CodigoBarras: 78936502018,
-      NomeProduto: "Lamotrigina 50mg c/30 cpr",
-      Laboratorio: "Medley",
-      Qtd: 5,
-      NomeCliente: "Maria Aparecida",
-      Telefone: "98104-6565",
-      Pago: "Sim",
-      Vendedor: "Ricardo",
-      ProcuraDivida: "Procura",
-      Status: "Aguarde",
-    },
-    {
-      id: 3,
-      DataCriacao: "02/02/2021",
-      CodigoBarras: 78936502018,
-      NomeProduto: "Lamotrigina 50mg c/30 cpr",
-      Laboratorio: "Medley",
-      Qtd: 5,
-      NomeCliente: "Maria Aparecida",
-      Telefone: "98104-6565",
-      Pago: "Sim",
-      Vendedor: "Ricardo",
-      ProcuraDivida: "Procura",
-      Status: "Aguarde",
-    },
-    {
-      id: 4,
-      DataCriacao: "02/02/2021",
-      CodigoBarras: 78936502018,
-      NomeProduto: "Lamotrigina 50mg c/30 cpr",
-      Laboratorio: "Medley",
-      Qtd: 5,
-      NomeCliente: "Maria Aparecida",
-      Telefone: "98104-6565",
-      Pago: "Sim",
-      Vendedor: "Ricardo",
-      ProcuraDivida: "Divida",
-      Status: "Aguarde",
-    },
-    {
-      id: 5,
-      DataCriacao: "02/02/2021",
-      CodigoBarras: 78936502018,
-      NomeProduto: "Lamotrigina 50mg c/30 cpr",
-      Laboratorio: "Medley",
-      Qtd: 5,
-      NomeCliente: "Maria Aparecida",
-      Telefone: "98104-6565",
-      Pago: "Sim",
-      Vendedor: "Ricardo",
-      ProcuraDivida: "Divida",
-      Status: "Aguarde",
-    },
-  ];
+  // const rows = [
+  //   {
+  //     id: 1,
+  //     DataCriacao: "02/02/2021",
+  //     CodigoBarras: 78936502018,
+  //     NomeProduto: "Lamotrigina 50mg c/30 cpr",
+  //     Laboratorio: "Medley",
+  //     Qtd: 5,
+  //     NomeCliente: "Maria Aparecida",
+  //     Telefone: "98104-6565",
+  //     Pago: "Sim",
+  //     Vendedor: "Ricardo",
+  //     ProcuraDivida: "Procura",
+  //     Status: "Aguarde",
+  //   },
+  //   {
+  //     id: 2,
+  //     DataCriacao: "02/02/2021",
+  //     CodigoBarras: 78936502018,
+  //     NomeProduto: "Lamotrigina 50mg c/30 cpr",
+  //     Laboratorio: "Medley",
+  //     Qtd: 5,
+  //     NomeCliente: "Maria Aparecida",
+  //     Telefone: "98104-6565",
+  //     Pago: "Sim",
+  //     Vendedor: "Ricardo",
+  //     ProcuraDivida: "Procura",
+  //     Status: "Aguarde",
+  //   },
+  //   {
+  //     id: 3,
+  //     DataCriacao: "02/02/2021",
+  //     CodigoBarras: 78936502018,
+  //     NomeProduto: "Lamotrigina 50mg c/30 cpr",
+  //     Laboratorio: "Medley",
+  //     Qtd: 5,
+  //     NomeCliente: "Maria Aparecida",
+  //     Telefone: "98104-6565",
+  //     Pago: "Sim",
+  //     Vendedor: "Ricardo",
+  //     ProcuraDivida: "Procura",
+  //     Status: "Aguarde",
+  //   },
+  //   {
+  //     id: 4,
+  //     DataCriacao: "02/02/2021",
+  //     CodigoBarras: 78936502018,
+  //     NomeProduto: "Lamotrigina 50mg c/30 cpr",
+  //     Laboratorio: "Medley",
+  //     Qtd: 5,
+  //     NomeCliente: "Maria Aparecida",
+  //     Telefone: "98104-6565",
+  //     Pago: "Sim",
+  //     Vendedor: "Ricardo",
+  //     ProcuraDivida: "Divida",
+  //     Status: "Aguarde",
+  //   },
+  //   {
+  //     id: 5,
+  //     DataCriacao: "02/02/2021",
+  //     CodigoBarras: 78936502018,
+  //     NomeProduto: "Lamotrigina 50mg c/30 cpr",
+  //     Laboratorio: "Medley",
+  //     Qtd: 5,
+  //     NomeCliente: "Maria Aparecida",
+  //     Telefone: "98104-6565",
+  //     Pago: "Sim",
+  //     Vendedor: "Ricardo",
+  //     ProcuraDivida: "Divida",
+  //     Status: "Aguarde",
+  //   },
+  // ];
 
   const ProcuraDivida = ({ row }) => {
     let variant = "";
@@ -137,11 +139,21 @@ export default function TableFalta() {
     setShowModalDelete(false);
   };
 
+  const obterFaltas = async () => {
+    const res = await FaltaGetAll();
+    if (res.success) {
+      setFaltas(res.data);
+    }
+  };
+
+  useEffect(() => {
+    obterFaltas();
+  }, []);
   return (
     <>
       <GeneralTable
         columns={columns}
-        rows={rows}
+        rows={faltas}
         editRow={() => {}}
         deleteRow={handleDeleteRow}
         Component={ProcuraDivida}
